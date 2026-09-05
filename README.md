@@ -18,7 +18,10 @@ Koriste se dva ugrađena `sklearn.datasets` skupa
 
 Modeli koji se optimizuju: **SVM (RBF kernel)** i **Random Forest** 
 
-**Metodologija evaluacije** (prati referentni rad Yang & Shami, 2020, poglavlje 7.1): #todo 
+**Metodologija evaluacije** (prati referentni rad Yang & Shami, 2020, poglavlje 7.1): svaki skup podataka se prvo deli na trening i test
+deo. Pretraga hiperparametara radi se preko **3-fold unakrsne validacije** isključivo na trening
+delu, ponovljena **10 puta sa različitim random seed-ovima** — rezultati (accuracy) se prijavljuju
+kao **mean ± std** preko tih 10 ponavljanja, što pokazuje i kvalitet i stabilnost optimizatora.
 
 ## Struktura projekta
 
@@ -26,12 +29,11 @@ Modeli koji se optimizuju: **SVM (RBF kernel)** i **Random Forest**
 .
 ├── README.md
 ├── requirements.txt
-├── notebooks/
-│   ├── 01_EDA.ipynb                    # analiza skupa podataka
-│   ├── 02_grid_search.ipynb            # Grid Search (SVM + Random Forest, oba skupa)
-│   ├── 03_random_search.ipynb          # Random Search (SVM + Random Forest, oba skupa)
-│   ├── 04_nelder_mead.ipynb            # Nelder-Mead (SVM + Random Forest, oba skupa)
-│   └── 05_poredjenje_zakljucci.ipynb   
+├── 01_EDA.ipynb                    # analiza skupa podataka
+├── 02_grid_search.ipynb            # Grid Search (SVM + Random Forest, oba skupa)
+│── 03_random_search.ipynb          # Random Search (SVM + Random Forest, oba skupa)
+├── 04_nelder_mead.ipynb            # Nelder-Mead (SVM + Random Forest, oba skupa)
+└── 05_poredjenje_zakljucci.ipynb   
 ├── results/                    # all_results.csv — generiše se pokretanjem svesaka 02–04
 ```
 
@@ -51,5 +53,10 @@ Modeli koji se optimizuju: **SVM (RBF kernel)** i **Random Forest**
 
 Sveske pregledati i pokretati ovim redosledom:
 
-#todo
+1. `01_EDA.ipynb` — samo analiza
+2. `02_grid_search.ipynb`, `03_random_search.ipynb`, `04_nelder_mead.ipynb` 
+3. `05_poredjenje_zakljucci.ipynb`
+
+Ako se sveske ponovo pokreću od početka, obrisati `results/all_results.csv` da se rezultati ne bi
+duplirali (fajl se dopunjuje, a ne prepisuje).
 
